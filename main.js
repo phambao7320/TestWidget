@@ -156,3 +156,5 @@ export function initializeWidget(props) {
   console.log(props);
   return new MessageWidget();
 }
+
+initializeWidget();
