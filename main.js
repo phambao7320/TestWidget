@@ -1,5 +1,4 @@
 import { CLOSE_ICON, MESSAGE_ICON, styles } from "./assets.js";
-
 class MessageWidget {
   constructor(position = "bottom-right") {
     this.position = this.getPosition(position);
@@ -153,8 +152,7 @@ class MessageWidget {
   }
 }
 
-function initializeWidget() {
+export function initializeWidget(props) {
+  console.log(props);
   return new MessageWidget();
 }
-
-initializeWidget();
