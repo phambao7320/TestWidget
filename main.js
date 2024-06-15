@@ -158,8 +158,13 @@ export function initializeWidget(props) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const scriptTag = document.currentScript;
-  const position = scriptTag.getAttribute("data-position") || "bottom-right";
-
-  initializeWidget({ position });
+  const scriptTags = document.getElementsByTagName("script");
+  const currentScript = Array.from(scriptTags).find((script) =>
+    script.src.includes("main.min.js")
+  );
+  if (currentScript) {
+    const position =
+      currentScript.getAttribute("data-position") || "bottom-right";
+    initializeWidget({ position });
+  }
 });
