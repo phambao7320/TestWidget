@@ -130,22 +130,6 @@ class MessageWidget {
 }
 
 export function initializeWidget(props) {
-  console.log(props);
+  console.log("debug_props_has", props);
   return new MessageWidget(props.position);
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Attempt to get the current script tag using different methods
-  const scriptTag =
-    document.currentScript ||
-    Array.from(document.getElementsByTagName("script")).find((script) =>
-      script.src.includes("main.min.js")
-    );
-
-  if (scriptTag) {
-    const position = scriptTag.getAttribute("data-position") || "bottom-right";
-    initializeWidget({ position });
-  } else {
-    console.error("Script tag not found.");
-  }
-});
