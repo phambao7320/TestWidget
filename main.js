@@ -157,4 +157,9 @@ export function initializeWidget(props) {
   return new MessageWidget();
 }
 
-initializeWidget();
+document.addEventListener("DOMContentLoaded", () => {
+  const scriptTag = document.currentScript;
+  const position = scriptTag.getAttribute("data-position") || "bottom-right";
+
+  initializeWidget({ position });
+});
