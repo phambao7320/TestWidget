@@ -103,5 +103,5 @@ function initializeWidget(props) {
   return new TestWidget(props);
 }
 
-window.MessageWidget = MessageWidget;
+window.MessageWidget = TestWidget;
 window.initializeWidget = initializeWidget;
