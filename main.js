@@ -28,7 +28,7 @@ class TestWidget {
 
   async initialize() {
     this.container = document.createElement("div");
-    container.style.position = "fixed";
+    this.container.style.position = "fixed";
     Object.keys(this.position).forEach(
       (key) => (this.container.style[key] = this.position[key])
     );
