@@ -16,6 +16,7 @@ class TestWidget {
   open = false;
   widgetContainer = null;
   modal = null;
+  container = null;
 
   getPosition(position) {
     const [vertical, horizontal] = position.split("-");
@@ -26,17 +27,17 @@ class TestWidget {
   }
 
   async initialize() {
-    const container = document.createElement("div");
+    this.container = document.createElement("div");
     container.style.position = "fixed";
     Object.keys(this.position).forEach(
-      (key) => (container.style[key] = this.position[key])
+      (key) => (this.container.style[key] = this.position[key])
     );
 
     document.addEventListener("resize", () => {
       console.log(window.innerWidth);
     });
 
-    document.body.appendChild(container);
+    document.body.appendChild(this.container);
 
     const buttonContainer = document.createElement("button");
     buttonContainer.classList.add("button__container");
@@ -59,8 +60,8 @@ class TestWidget {
 
     this.createWidgetContent();
 
-    container.appendChild(this.widgetContainer);
-    container.appendChild(buttonContainer);
+    this.container.appendChild(this.widgetContainer);
+    this.container.appendChild(buttonContainer);
   }
 
   createWidgetContent() {
