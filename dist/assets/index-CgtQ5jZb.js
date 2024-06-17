@@ -138,15 +138,12 @@ var l=Object.defineProperty;var c=(r,e,i)=>e in r?l(r,e,{enumerable:!0,configura
         cursor: pointer;
         font-size: 24px;
     }
-<<<<<<<< HEAD:dist/assets/index-CgtQ5jZb.js
 
     @media only screen and (max-width: 768px) {
         .modal-content {
           width: 100%;
         }
     }
-========
->>>>>>>> a45d87a19f0fd1ec2c537f42e8b394853c0949f4:dist/assets/index-CIa2mmFA.js
 `,h=`
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="#FFFFFF" stroke="#FFFFFF"
         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
@@ -161,8 +158,4 @@ var l=Object.defineProperty;var c=(r,e,i)=>e in r?l(r,e,{enumerable:!0,configura
           <button><a href=${this.TCUrl} target="_blank">Go TO TableCheck</a></button>
         </div>
       </div>
-<<<<<<<< HEAD:dist/assets/index-CgtQ5jZb.js
     `,this.modal=this.widgetContainer.querySelector(".modal"),this.widgetContainer.querySelector(".modal-content").addEventListener("click",n=>n.stopPropagation()),this.widgetContainer.querySelector("#root-modal").addEventListener("click",this.toggleOpen.bind(this))}injectStyles(){const e=document.createElement("style");e.innerHTML=p.replace(/^\s+|\n/gm,""),document.head.appendChild(e)}toggleOpen(){this.open=!this.open,this.open?(this.widgetContainer.classList.remove("widget__hidden"),this.modal.classList.remove("hidden")):(this.createWidgetContent(),this.widgetContainer.classList.add("widget__hidden"),this.modal.classList.add("hidden"))}}function g(r){return new a(r)}window.MessageWidget=a;window.initializeWidget=g;
-========
-    `,this.modal=this.widgetContainer.querySelector(".modal"),this.widgetContainer.querySelector("#root-modal").addEventListener("click",this.toggleOpen.bind(this))}injectStyles(){const e=document.createElement("style");e.innerHTML=p.replace(/^\s+|\n/gm,""),document.head.appendChild(e)}toggleOpen(){this.open=!this.open,this.open?(this.widgetContainer.classList.remove("widget__hidden"),this.modal.classList.remove("hidden")):(this.createWidgetContent(),this.widgetContainer.classList.add("widget__hidden"),this.modal.classList.add("hidden"))}}function g(r){return new a(r)}window.MessageWidget=a;window.initializeWidget=g;
->>>>>>>> a45d87a19f0fd1ec2c537f42e8b394853c0949f4:dist/assets/index-CIa2mmFA.js
