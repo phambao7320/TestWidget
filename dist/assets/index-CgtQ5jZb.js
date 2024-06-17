@@ -1,4 +1,4 @@
-var a=Object.defineProperty;var l=(r,e,i)=>e in r?a(r,e,{enumerable:!0,configurable:!0,writable:!0,value:i}):r[e]=i;var d=(r,e,i)=>l(r,typeof e!="symbol"?e+"":e,i);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))n(t);new MutationObserver(t=>{for(const o of t)if(o.type==="childList")for(const s of o.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&n(s)}).observe(document,{childList:!0,subtree:!0});function i(t){const o={};return t.integrity&&(o.integrity=t.integrity),t.referrerPolicy&&(o.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?o.credentials="include":t.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function n(t){if(t.ep)return;t.ep=!0;const o=i(t);fetch(t.href,o)}})();const c=`
+var l=Object.defineProperty;var c=(r,e,i)=>e in r?l(r,e,{enumerable:!0,configurable:!0,writable:!0,value:i}):r[e]=i;var d=(r,e,i)=>c(r,typeof e!="symbol"?e+"":e,i);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))n(t);new MutationObserver(t=>{for(const o of t)if(o.type==="childList")for(const s of o.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&n(s)}).observe(document,{childList:!0,subtree:!0});function i(t){const o={};return t.integrity&&(o.integrity=t.integrity),t.referrerPolicy&&(o.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?o.credentials="include":t.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function n(t){if(t.ep)return;t.ep=!0;const o=i(t);fetch(t.href,o)}})();const p=`
     .widget__container * {
         box-sizing: border-box;
     }        
@@ -124,6 +124,7 @@ var a=Object.defineProperty;var l=(r,e,i)=>e in r?a(r,e,{enumerable:!0,configura
         padding: 20px;
         border-radius: 4px;
         text-align: center;
+        width: 500px;
     }
 
     .hidden {
@@ -137,13 +138,19 @@ var a=Object.defineProperty;var l=(r,e,i)=>e in r?a(r,e,{enumerable:!0,configura
         cursor: pointer;
         font-size: 24px;
     }
-`,p=`
+
+    @media only screen and (max-width: 768px) {
+        .modal-content {
+          width: 100%;
+        }
+    }
+`,h=`
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="#FFFFFF" stroke="#FFFFFF"
         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
     </svg>
-`;class h{constructor({position:e="bottom-right",CWUrl:i,TCUrl:n}){d(this,"position","");d(this,"CWurl","");d(this,"TCUrl","");d(this,"open",!1);d(this,"widgetContainer",null);d(this,"modal",null);this.position=this.getPosition(e),this.CWurl=i,this.TCUrl=n,this.open=!1,this.initialize(),this.injectStyles()}getPosition(e){const[i,n]=e.split("-");return{[i]:"30px",[n]:"30px"}}async initialize(){const e=document.createElement("div");e.style.position="fixed",Object.keys(this.position).forEach(o=>e.style[o]=this.position[o]),document.addEventListener("resize",()=>{console.log(window.innerWidth)}),document.body.appendChild(e);const i=document.createElement("button");i.classList.add("button__container");const n=document.createElement("span");n.innerText="Open Modal",n.classList.add("widget__icon"),this.widgetIcon=n;const t=document.createElement("span");t.innerHTML=p,t.classList.add("widget__icon","widget__hidden"),this.closeIcon=t,i.appendChild(this.widgetIcon),i.appendChild(this.closeIcon),i.addEventListener("click",this.toggleOpen.bind(this)),this.widgetContainer=document.createElement("div"),this.widgetContainer.classList.add("widget__hidden","widget__container"),this.createWidgetContent(),e.appendChild(this.widgetContainer),e.appendChild(i)}createWidgetContent(){this.widgetContainer.innerHTML=`
+`;class a{constructor({position:e="bottom-right",CWUrl:i,TCUrl:n}){d(this,"position","");d(this,"CWurl","");d(this,"TCUrl","");d(this,"open",!1);d(this,"widgetContainer",null);d(this,"modal",null);this.position=this.getPosition(e),this.CWurl=i,this.TCUrl=n,this.open=!1,this.initialize(),this.injectStyles()}getPosition(e){const[i,n]=e.split("-");return{[i]:"30px",[n]:"30px"}}async initialize(){const e=document.createElement("div");e.style.position="fixed",Object.keys(this.position).forEach(o=>e.style[o]=this.position[o]),document.addEventListener("resize",()=>{console.log(window.innerWidth)}),document.body.appendChild(e);const i=document.createElement("button");i.classList.add("button__container");const n=document.createElement("span");n.innerText="Open Modal",n.classList.add("widget__icon"),this.widgetIcon=n;const t=document.createElement("span");t.innerHTML=h,t.classList.add("widget__icon","widget__hidden"),this.closeIcon=t,i.appendChild(this.widgetIcon),i.appendChild(this.closeIcon),i.addEventListener("click",this.toggleOpen.bind(this)),this.widgetContainer=document.createElement("div"),this.widgetContainer.classList.add("widget__hidden","widget__container"),this.createWidgetContent(),e.appendChild(this.widgetContainer),e.appendChild(i)}createWidgetContent(){this.widgetContainer.innerHTML=`
       <div id="root-modal" class="modal hidden">
         <div class="modal-content">
           <p>This is a modal content</p>
@@ -151,4 +158,4 @@ var a=Object.defineProperty;var l=(r,e,i)=>e in r?a(r,e,{enumerable:!0,configura
           <button><a href=${this.TCUrl} target="_blank">Go TO TableCheck</a></button>
         </div>
       </div>
-    `,this.modal=this.widgetContainer.querySelector(".modal"),this.widgetContainer.querySelector("#root-modal").addEventListener("click",this.toggleOpen.bind(this))}injectStyles(){const e=document.createElement("style");e.innerHTML=c.replace(/^\s+|\n/gm,""),document.head.appendChild(e)}toggleOpen(){this.open=!this.open,this.open?(this.widgetContainer.classList.remove("widget__hidden"),this.modal.classList.remove("hidden")):(this.createWidgetContent(),this.widgetContainer.classList.add("widget__hidden"),this.modal.classList.add("hidden"))}}function g(r){return new h(r)}window.MessageWidget=MessageWidget;window.initializeWidget=g;
+    `,this.modal=this.widgetContainer.querySelector(".modal"),this.widgetContainer.querySelector(".modal-content").addEventListener("click",n=>n.stopPropagation()),this.widgetContainer.querySelector("#root-modal").addEventListener("click",this.toggleOpen.bind(this))}injectStyles(){const e=document.createElement("style");e.innerHTML=p.replace(/^\s+|\n/gm,""),document.head.appendChild(e)}toggleOpen(){this.open=!this.open,this.open?(this.widgetContainer.classList.remove("widget__hidden"),this.modal.classList.remove("hidden")):(this.createWidgetContent(),this.widgetContainer.classList.add("widget__hidden"),this.modal.classList.add("hidden"))}}function g(r){return new a(r)}window.MessageWidget=a;window.initializeWidget=g;

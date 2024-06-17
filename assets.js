@@ -124,6 +124,7 @@ export const styles = `
         padding: 20px;
         border-radius: 4px;
         text-align: center;
+        width: 500px;
     }
 
     .hidden {
@@ -136,6 +137,12 @@ export const styles = `
         right: 10px;
         cursor: pointer;
         font-size: 24px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .modal-content {
+          width: 100%;
+        }
     }
 `;
 

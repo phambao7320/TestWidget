@@ -74,6 +74,8 @@ class TestWidget {
       </div>
     `;
     this.modal = this.widgetContainer.querySelector(".modal");
+    const modalContent = this.widgetContainer.querySelector(".modal-content");
+    modalContent.addEventListener("click", (e) => e.stopPropagation());
 
     const rootModal = this.widgetContainer.querySelector("#root-modal");
     rootModal.addEventListener("click", this.toggleOpen.bind(this));
