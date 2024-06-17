@@ -99,6 +99,12 @@ class TestWidget {
       this.modal.classList.add("hidden");
     }
   }
+
+  clear() {
+    if (this.container) {
+      document.body.removeChild(this.container);
+    }
+  }
 }
 
 function initializeWidget(props) {
