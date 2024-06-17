@@ -36,10 +36,9 @@ export const styles = `
     }
     .button__container {
         border: none;
-        background-color: #0f172a;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
+        // background-color: #0f172a;
+        width: 200px;
+        height: 50px;
         cursor: pointer;
     }
 
@@ -97,7 +96,7 @@ export const styles = `
         height: 48px;
         border-radius: 6px;
         font-size: 18px;
-        background-color: #000;
+        // background-color: #000;
         color: #fff;
         border: 0;
         width: 100%;
@@ -106,6 +105,37 @@ export const styles = `
 
     form button:hover {
         background-color: rgba(0, 0, 0, 95%);
+    }
+
+    .modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 24px;
     }
 `;
 

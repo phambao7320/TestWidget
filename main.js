@@ -1,16 +1,21 @@
 import { CLOSE_ICON, MESSAGE_ICON, styles } from "./assets.js";
 
-export class MessageWidget {
-  constructor(position = "bottom-right") {
+export class TestWidget {
+  constructor({ position = "bottom-right", CWUrl, TCUrl }) {
     this.position = this.getPosition(position);
+    this.CWurl = CWUrl;
+    this.TCUrl = TCUrl;
     this.open = false;
     this.initialize();
     this.injectStyles();
   }
 
   position = "";
+  CWurl = "";
+  TCUrl = "";
   open = false;
   widgetContainer = null;
+  modal = null;
 
   getPosition(position) {
     const [vertical, horizontal] = position.split("-");
@@ -26,13 +31,17 @@ export class MessageWidget {
     Object.keys(this.position).forEach(
       (key) => (container.style[key] = this.position[key])
     );
+
+    document.addEventListener("resize", () => {
+      console.log(window.innerWidth);
+    });
+
     document.body.appendChild(container);
 
     const buttonContainer = document.createElement("button");
     buttonContainer.classList.add("button__container");
-
     const widgetIconElement = document.createElement("span");
-    widgetIconElement.innerHTML = MESSAGE_ICON;
+    widgetIconElement.innerText = "Open Modal";
     widgetIconElement.classList.add("widget__icon");
     this.widgetIcon = widgetIconElement;
 
@@ -56,55 +65,18 @@ export class MessageWidget {
 
   createWidgetContent() {
     this.widgetContainer.innerHTML = `
-        <header class="widget__header">
-            <h3>Start a conversation</h3>
-            <p>We usually respond within a few hours</p>
-        </header>
-
-        <form>
-            <div class="form__field">
-                <label for="name">Name</label>
-                <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter your name"
-                />
-            </div>
-
-            <div class="form__field">
-                <label for="email">Email</label>
-                <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-                />
-            </div>
-
-            <div class="form__field">
-                <label for="subject">Subject</label>
-                <input
-                type="text"
-                id="subject"
-                name="subject"
-                placeholder="Enter Message Subject"
-                />
-            </div>
-
-            <div class="form__field">
-                <label for="message">Message</label>
-                <textarea
-                id="message"
-                name="message"
-                placeholder="Enter your message"
-                rows="6"
-                ></textarea>
-            </div>
-
-            <button>Send Message</button>
-        </form>
+      <div id="root-modal" class="modal hidden">
+        <div class="modal-content">
+          <p>This is a modal content</p>
+          <button><a href=${this.CWurl} target="_blank">Go To CW</a></button>
+          <button><a href=${this.TCUrl} target="_blank">Go TO TableCheck</a></button>
+        </div>
+      </div>
     `;
+    this.modal = this.widgetContainer.querySelector(".modal");
+
+    const rootModal = this.widgetContainer.querySelector("#root-modal");
+    rootModal.addEventListener("click", this.toggleOpen.bind(this));
   }
 
   injectStyles() {
@@ -117,21 +89,21 @@ export class MessageWidget {
   toggleOpen() {
     this.open = !this.open;
     if (this.open) {
-      this.widgetIcon.classList.add("widget__hidden");
-      this.closeIcon.classList.remove("widget__hidden");
       this.widgetContainer.classList.remove("widget__hidden");
+      this.modal.classList.remove("hidden");
     } else {
       this.createWidgetContent();
-      this.widgetIcon.classList.remove("widget__hidden");
-      this.closeIcon.classList.add("widget__hidden");
       this.widgetContainer.classList.add("widget__hidden");
+      this.modal.classList.add("hidden");
     }
   }
 }
 
 export function initializeWidget(props) {
-  console.log("debug_props_has", props);
-  return new MessageWidget(props.position);
+  return new TestWidget(props);
 }
 
-// initializeWidget({ position: "top-left" });
+// initializeWidget({
+//   TCUrl: "https://jwt.io",
+//   CWUrl: "https://www.google.com/",
+// });
