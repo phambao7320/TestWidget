@@ -1,6 +1,6 @@
 import { CLOSE_ICON, MESSAGE_ICON, styles } from "./assets.js";
 
-export class TestWidget {
+class TestWidget {
   constructor({ position = "bottom-right", CWUrl, TCUrl }) {
     this.position = this.getPosition(position);
     this.CWurl = CWUrl;
@@ -99,11 +99,9 @@ export class TestWidget {
   }
 }
 
-export function initializeWidget(props) {
+function initializeWidget(props) {
   return new TestWidget(props);
 }
 
-// initializeWidget({
-//   TCUrl: "https://jwt.io",
-//   CWUrl: "https://www.google.com/",
-// });
+window.MessageWidget = MessageWidget;
+window.initializeWidget = initializeWidget;
