@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
     <script type="module" src="/main.js"></script>
+    <link rel="stylesheet" href="styles.css" />
     <!-- <script type="module">
       import { initializeWidget } from "https://raw.githack.com/phambao7320/TestWidget/main/main.js";
 
@@ -17,17 +18,18 @@
       type="module"
       src="https://rawcdn.githack.com/phambao7320/TestWidget/e9922ad92577f22d86a8d535f902cc14f94985b2/main.js"
     ></script> -->
-    <!-- <script>
+    <script>
       document.addEventListener("DOMContentLoaded", () => {
-        window.initializeWidget({
-          position: "bottom-right",
-          CWUrl: "https://www.google.com",
-          TCUrl: "https://jwt.io",
+        window.initializeWidgetClubWonder({
+          brandId: 38,
+          restaurantId: 2,
+          urlTableCheck: "https://jwt.io",
+          elementId: "widget",
         });
       });
-    </script> -->
+    </script>
   </head>
   <body>
-    <!-- <div id="app">Content abcxyz</div> -->
+    <div id="widget"></div>
   </body>
 </html>
