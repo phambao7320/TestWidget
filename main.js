@@ -495,11 +495,11 @@ class WidgetClubWonder {
     }
   }
 
-  clear() {
-    if (this.container) {
-      document.body.removeChild(this.container);
-    }
-  }
+  // clear() {
+  //   if (this.container) {
+  //     document.body.removeChild(this.container);
+  //   }
+  // }
 }
 
 let widgetInstance = null;
