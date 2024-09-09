@@ -357,6 +357,7 @@ class WidgetClubWonder {
     this.open = false;
     this.initialize();
     this.injectStyles();
+    console.log("OKE");
   }
 
   urlClubWonder = "https://frontend.staging.club-wonder.jp/";
@@ -505,6 +506,7 @@ class WidgetClubWonder {
 let widgetInstance = null;
 
 function initializeWidgetClubWonder(props) {
+  console.log("debug", props);
   return new WidgetClubWonder(props);
 }
 
