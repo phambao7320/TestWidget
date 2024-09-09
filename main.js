@@ -505,16 +505,15 @@ class WidgetClubWonder {
 let widgetInstance = null;
 
 function initializeWidgetClubWonder(props) {
-  widgetInstance = new WidgetClubWonder(props);
-  return widgetInstance;
+  return new WidgetClubWonder(props);
 }
 
-function clearWidgetClubWonder() {
-  if (widgetInstance) {
-    widgetInstance.clear();
-    widgetInstance = null;
-  }
-}
+// function clearWidgetClubWonder() {
+//   if (widgetInstance) {
+//     widgetInstance.clear();
+//     widgetInstance = null;
+//   }
+// }
 
 // initializeWidgetClubWonder({
 //   brandId: 38,
@@ -524,4 +523,4 @@ function clearWidgetClubWonder() {
 // });
 
 window.initializeWidgetClubWonder = initializeWidgetClubWonder;
-window.clearWidgetClubWonder = clearWidgetClubWonder;
+// window.clearWidgetClubWonder = clearWidgetClubWonder;
