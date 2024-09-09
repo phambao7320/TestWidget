@@ -388,8 +388,6 @@ class WidgetClubWonder {
     this.container.classList.add("widget__container");
     this.container.style.position = "fixed";
 
-    // document.body.appendChild(this.container);
-
     this.controlContainer = document.createElement("div");
     this.controlContainer.classList.add("widget__wrapper");
     this.createControlContainer();
@@ -496,11 +494,11 @@ class WidgetClubWonder {
     }
   }
 
-  // clear() {
-  //   if (this.container) {
-  //     document.body.removeChild(this.container);
-  //   }
-  // }
+  clear() {
+    if (this.container) {
+      document.body.removeChild(this.container);
+    }
+  }
 }
 
 let widgetInstance = null;
@@ -510,12 +508,12 @@ function initializeWidgetClubWonder(props) {
   return new WidgetClubWonder(props);
 }
 
-// function clearWidgetClubWonder() {
-//   if (widgetInstance) {
-//     widgetInstance.clear();
-//     widgetInstance = null;
-//   }
-// }
+function clearWidgetClubWonder() {
+  if (widgetInstance) {
+    widgetInstance.clear();
+    widgetInstance = null;
+  }
+}
 
 // initializeWidgetClubWonder({
 //   brandId: 38,
@@ -525,4 +523,4 @@ function initializeWidgetClubWonder(props) {
 // });
 
 window.initializeWidgetClubWonder = initializeWidgetClubWonder;
-// window.clearWidgetClubWonder = clearWidgetClubWonder;
+window.clearWidgetClubWonder = clearWidgetClubWonder;
