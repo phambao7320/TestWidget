@@ -356,7 +356,6 @@ class WidgetClubWonder {
     this.open = false;
     this.initialize();
     this.injectStyles();
-    console.log("OKE");
   }
 
   urlClubWonder = "https://frontend.staging.club-wonder.jp/";
@@ -383,8 +382,8 @@ class WidgetClubWonder {
     if (!this.container) {
       throw new Error("Not found element!");
     }
-    this.clear();
 
+    this.clear();
     this.container.classList.add("widget__container");
     this.container.style.position = "fixed";
 
@@ -469,7 +468,7 @@ class WidgetClubWonder {
         ${
           this.urlTableCheck
             ? `<a href="${this.urlTableCheck}" target="_blank" class="link__reserve--tc">Reserve by Table Check</a>`
-            : null
+            : ""
         }
       </div>    
     `;
@@ -506,15 +505,7 @@ class WidgetClubWonder {
 }
 
 function initializeWidgetClubWonder(props) {
-  console.log("debug", props);
   return new WidgetClubWonder(props);
 }
-
-// initializeWidgetClubWonder({
-//   brandId: 38,
-//   restaurantId: 2,
-//   urlTableCheck: "https://jwt.io",
-//   elementId: "widget",
-// });
 
 window.initializeWidgetClubWonder = initializeWidgetClubWonder;
