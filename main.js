@@ -358,7 +358,7 @@ class WidgetClubWonder {
     this.injectStyles();
   }
 
-  urlClubWonder = "https://frontend.staging.club-wonder.jp/";
+  urlClubWonder = "https://frontend.staging.club-wonder.jp";
   urlTableCheck = "";
   urlCWNavigation = "";
   elementId = "";
