@@ -383,6 +383,7 @@ class WidgetClubWonder {
     if (!this.container) {
       throw new Error("Not found element!");
     }
+    this.clear();
 
     this.container.classList.add("widget__container");
     this.container.style.position = "fixed";
@@ -499,23 +500,14 @@ class WidgetClubWonder {
 
   clear() {
     if (this.container) {
-      document.body.removeChild(this.container);
+      this.container.innerHTML = "";
     }
   }
 }
 
-let widgetInstance = null;
-
 function initializeWidgetClubWonder(props) {
   console.log("debug", props);
   return new WidgetClubWonder(props);
-}
-
-function clearWidgetClubWonder() {
-  if (widgetInstance) {
-    widgetInstance.clear();
-    widgetInstance = null;
-  }
 }
 
 // initializeWidgetClubWonder({
@@ -526,4 +518,3 @@ function clearWidgetClubWonder() {
 // });
 
 window.initializeWidgetClubWonder = initializeWidgetClubWonder;
-window.clearWidgetClubWonder = clearWidgetClubWonder;
