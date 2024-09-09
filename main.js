@@ -44,12 +44,11 @@ const styles = `
     .modal__container {
         width: 100vw;
         height: 100svh;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
-        // transform: translate(-50%,-50%);
         background: #000000CC;
-        z-index: 5;
+        z-index: 9999999999;
     }
 
     #root__modal {
@@ -466,7 +465,11 @@ class WidgetClubWonder {
     this.controlContainer.innerHTML = `
       <div class="control__container">
         <div class="btn__reserve--cw">Reserve by Club Wonder</div>
-        <a href="${this.urlTableCheck}" target="_blank" class="link__reserve--tc">Reserve by Table Check</a>
+        ${
+          this.urlTableCheck
+            ? `<a href="${this.urlTableCheck}" target="_blank" class="link__reserve--tc">Reserve by Table Check</a>`
+            : null
+        }
       </div>    
     `;
     const btnReserveCW =
