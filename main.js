@@ -388,7 +388,7 @@ class WidgetClubWonder {
     this.container.classList.add("widget__container");
     this.container.style.position = "fixed";
 
-    document.body.appendChild(this.container);
+    // document.body.appendChild(this.container);
 
     this.controlContainer = document.createElement("div");
     this.controlContainer.classList.add("widget__wrapper");
