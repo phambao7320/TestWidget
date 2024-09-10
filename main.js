@@ -3,6 +3,12 @@ const styles = `
         box-sizing: border-box;
         font-family: Noto Sans JP, sans-serif;
     }
+
+    .wcw-container {
+        width: 100%;
+        height: 100%;
+        position: absolute
+    }
      
     .wcw-wrapper {
         width: 100%;
@@ -403,7 +409,6 @@ class WidgetClubWonder {
 
     this.clear();
     this.container.classList.add("wcw-container");
-    this.container.style.position = "fixed";
 
     this.controlContainer = document.createElement("div");
     this.controlContainer.classList.add("wcw-wrapper");
