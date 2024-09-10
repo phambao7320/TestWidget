@@ -1,7 +1,7 @@
 const styles = `
     .wcw-container * {
         box-sizing: border-box;
-        font-family: Noto Sans JP, sans-serif;
+        font-family: Noto Sans JP, sans-serif !important;
     }
 
     .wcw-container {
@@ -40,6 +40,8 @@ const styles = `
     .wcw-link__reserve--tc {
         text-align: center;
         color: #d3cdcd !important;
+        text-decoration: underline !important;
+        text-underline-offset: 4px !important;
     }
 
     .wcw-modal__container {
@@ -369,17 +371,16 @@ const ICON_GIFT = `
 const API_URL = `https://prjwondertablestaging-api-staging.azurewebsites.net/api/restaurants`;
 
 class WidgetClubWonder {
-  constructor({ brandId, elementId, restaurantId }) {
-    if (!elementId) {
-      throw new Error("elementId is required");
-    }
+  constructor({ brandId, elementId, restaurantId, hiddenUrlTableCheck }) {
     this.open = false;
     this.elementId = elementId;
+    this.hiddenUrlTableCheck = hiddenUrlTableCheck;
     this.urlCWNavigation = this.getNavigationCWUrl(brandId, restaurantId);
     this.initialize(restaurantId);
     this.injectStyles();
   }
 
+  hiddenUrlTableCheck = false;
   urlClubWonder = "https://frontend.staging.club-wonder.jp";
   urlTableCheck = "";
   urlCWNavigation = "";
@@ -393,9 +394,7 @@ class WidgetClubWonder {
     if (brandId && restaurantId)
       return `${this.urlClubWonder}/brands/${brandId}/restaurants/${restaurantId}`;
 
-    if (brandId) return `${this.urlClubWonder}/brands/${brandId}/restaurants`;
-
-    throw new Error("brandId is required");
+    return `${this.urlClubWonder}/brands/${brandId}/restaurants`;
   };
 
   async initialize(restaurantId) {
@@ -503,11 +502,14 @@ class WidgetClubWonder {
   }
 
   createControlContainer() {
+    const isDisplayTableCheck =
+      !this.hiddenUrlTableCheck && !!this.urlTableCheck;
+
     this.controlContainer.innerHTML = `
       <div class="wcw-control__container">
         <div class="wcw-btn__reserve-cw">Reserve by Club Wonder</div>
         ${
-          this.urlTableCheck
+          isDisplayTableCheck
             ? `<a href="${this.urlTableCheck}" target="_blank" class="wcw-link__reserve--tc">Reserve by Table Check</a>`
             : ""
         }
@@ -548,6 +550,14 @@ class WidgetClubWonder {
 }
 
 function initializeWidgetClubWonder(props) {
+  if (!props.elementId) {
+    throw new Error("elementId is required");
+  }
+
+  if (!props.brandId) {
+    throw new Error("brandId is required");
+  }
+
   return new WidgetClubWonder(props);
 }
 
