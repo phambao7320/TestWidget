@@ -360,17 +360,17 @@ const ICON_GIFT = `
     </svg>
 `;
 
+const API_URL = `https://prjwondertablestaging-api-staging.azurewebsites.net/api/restaurants`;
+
 class WidgetClubWonder {
-  constructor({ brandId, elementId, restaurantId, urlTableCheck }) {
+  constructor({ brandId, elementId, restaurantId }) {
     if (!elementId) {
       throw new Error("elementId is required");
     }
-
-    this.elementId = elementId;
-    this.urlTableCheck = urlTableCheck;
-    this.urlCWNavigation = this.getNavigationCWUrl(brandId, restaurantId);
     this.open = false;
-    this.initialize();
+    this.elementId = elementId;
+    this.urlCWNavigation = this.getNavigationCWUrl(brandId, restaurantId);
+    this.initialize(restaurantId);
     this.injectStyles();
   }
 
@@ -392,7 +392,9 @@ class WidgetClubWonder {
     throw new Error("brandId is required");
   };
 
-  async initialize() {
+  async initialize(restaurantId) {
+    await this.getReserveLink(restaurantId);
+
     this.container = document.querySelector(`#${this.elementId}`);
 
     if (!this.container) {
@@ -414,6 +416,22 @@ class WidgetClubWonder {
 
     this.controlContainer.appendChild(this.widgetContainer);
     this.container.appendChild(this.controlContainer);
+  }
+
+  async getReserveLink(restaurantId) {
+    if (!restaurantId) {
+      return (this.urlTableCheck = "");
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/${restaurantId}/for-widget`);
+      if (response.status === 200) {
+        const result = await response.json();
+        this.urlTableCheck = result?.tablecheck_booking_url ?? "";
+      }
+    } catch (error) {
+      this.urlTableCheck = "";
+    }
   }
 
   createModalContent() {
